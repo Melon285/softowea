@@ -10,8 +10,9 @@ $clientId = '';
 $clientSecret = '';
 $redirectUri  = '';
 
+
 // 【設定2】許可したい組織のドメイン（@以降）を入力してください（例: 'sample.ac.jp'）
-$allowedDomain = 'your-school.ac.jp'; 
+$allowedDomain = 'g.nihon-u.ac.jp'; 
 
 // Googleクライアントの設定
 $client = new Google\Client();

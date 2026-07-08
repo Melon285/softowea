@@ -10,6 +10,7 @@ $clientId     = '';
 $clientSecret = '';
 $redirectUri  = ''; // XREAのURL
 
+
 // すでにログイン済みの場合は、学生用トップ画面に自動転送
 if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) {
     header('Location: student.php');
