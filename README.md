@@ -1,7 +1,7 @@
 ユースケース
 
 flowchart LR
-
+    ```mermaid
     %% Actors
     Student[学生]
     Teacher[教員]
@@ -46,11 +46,11 @@ flowchart LR
     %% Extend Relationships
     UC4 -. "<<extend>>" .-> UC3
     UC5 -. "<<extend>>" .-> UC3
-
+```
 クラス図
 
 classDiagram
-
+```mermaid
     class User {
         <<abstract>>
         +int id
@@ -127,11 +127,11 @@ classDiagram
     AttendanceService ..> Student : uses
 
     AuthService ..> User : authenticates
-
+    ```
 シーケンス図
 学生ログイン
 sequenceDiagram
-
+```mermaid
 actor Student as 学生
 participant UI as ログイン画面
 participant Controller as AuthController
@@ -151,10 +151,10 @@ else ユーザー未登録
     Controller-->>UI: エラー
     UI-->>Student: ログイン失敗表示
 end
-
+```
 QRコード生成
 sequenceDiagram
-
+```mermaid
 actor Student as 学生
 participant UI as ダッシュボード
 participant Controller as QRController
@@ -180,10 +180,10 @@ else 学生情報取得失敗
     Controller-->>UI: エラー通知
     UI-->>Student: QR生成失敗
 end
-
+```
 出席登録
 sequenceDiagram
-
+```mermaid
 actor Teacher as 教員
 participant UI as QR読取画面
 participant Controller as AttendanceController
@@ -234,10 +234,10 @@ else QRトークン無効
     UI-->>Teacher: 読取失敗
 
 end
-
+```
 出席履歴確認
 sequenceDiagram
-
+```mermaid
 actor Student as 学生
 participant UI as ダッシュボード
 participant Controller as AttendanceController
@@ -259,12 +259,12 @@ end
 Controller-->>UI: 履歴・集計結果
 
 UI-->>Student: 履歴一覧表示
-
+```
 
 状態遷移図
 学生セッション
 stateDiagram-v2
-
+```mermaid
     [*] --> 未認証
 
     未認証 --> 認証中 : ログイン要求
@@ -281,10 +281,10 @@ stateDiagram-v2
     セッション期限切れ --> 未認証
 
     未認証 --> [*]
-
+```
 QRコード
 stateDiagram-v2
-
+```mermaid
     [*] --> 未生成
 
     未生成 --> 生成済み : QR生成要求
@@ -301,10 +301,10 @@ stateDiagram-v2
 
     使用済み --> [*]
     再生成待ち --> [*]
-
+```
 出席記録
 stateDiagram-v2
-
+```mermaid
     [*] --> 未登録
 
     未登録 --> 登録処理中 : QR読取
@@ -322,10 +322,10 @@ stateDiagram-v2
 
     出席登録済み --> [*]
     遅刻登録済み --> [*]
-
+```
 出席
 stateDiagram-v2
-
+```mermaid
     [*] --> 未ログイン
 
     未ログイン --> ログイン済み : 認証成功
@@ -350,7 +350,7 @@ stateDiagram-v2
     ログイン済み --> 未ログイン : ログアウト
 
     未ログイン --> [*]
-
+```
 
 
 # テスト結果報告書
