@@ -152,9 +152,10 @@ else ユーザー未登録
     UI-->>Student: ログイン失敗表示
 end
 ```
+
+```mermaid
 QRコード生成
 sequenceDiagram
-```mermaid
 actor Student as 学生
 participant UI as ダッシュボード
 participant Controller as QRController
@@ -181,9 +182,10 @@ else 学生情報取得失敗
     UI-->>Student: QR生成失敗
 end
 ```
+
+```mermaid
 出席登録
 sequenceDiagram
-```mermaid
 actor Teacher as 教員
 participant UI as QR読取画面
 participant Controller as AttendanceController
@@ -235,9 +237,10 @@ else QRトークン無効
 
 end
 ```
+
+```mermaid
 出席履歴確認
 sequenceDiagram
-```mermaid
 actor Student as 学生
 participant UI as ダッシュボード
 participant Controller as AttendanceController
@@ -262,9 +265,10 @@ UI-->>Student: 履歴一覧表示
 ```
 
 状態遷移図
+
+```mermaid
 学生セッション
 stateDiagram-v2
-```mermaid
     [*] --> 未認証
 
     未認証 --> 認証中 : ログイン要求
@@ -282,9 +286,10 @@ stateDiagram-v2
 
     未認証 --> [*]
 ```
+
+```mermaid
 QRコード
 stateDiagram-v2
-```mermaid
     [*] --> 未生成
 
     未生成 --> 生成済み : QR生成要求
@@ -302,9 +307,10 @@ stateDiagram-v2
     使用済み --> [*]
     再生成待ち --> [*]
 ```
+
+```mermaid
 出席記録
 stateDiagram-v2
-```mermaid
     [*] --> 未登録
 
     未登録 --> 登録処理中 : QR読取
@@ -323,9 +329,10 @@ stateDiagram-v2
     出席登録済み --> [*]
     遅刻登録済み --> [*]
 ```
+
+```mermaid
 出席
 stateDiagram-v2
-```mermaid
     [*] --> 未ログイン
 
     未ログイン --> ログイン済み : 認証成功
