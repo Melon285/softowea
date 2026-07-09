@@ -1,7 +1,7 @@
 ユースケース
 
+```mermaid
 flowchart LR
-    ```mermaid
     %% Actors
     Student[学生]
     Teacher[教員]
@@ -48,9 +48,8 @@ flowchart LR
     UC5 -. "<<extend>>" .-> UC3
 ```
 クラス図
-
-classDiagram
 ```mermaid
+classDiagram
     class User {
         <<abstract>>
         +int id
@@ -127,11 +126,12 @@ classDiagram
     AttendanceService ..> Student : uses
 
     AuthService ..> User : authenticates
-    ```
+ ```
 シーケンス図
+
+```mermaid
 学生ログイン
 sequenceDiagram
-```mermaid
 actor Student as 学生
 participant UI as ログイン画面
 participant Controller as AuthController
