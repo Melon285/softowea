@@ -129,8 +129,9 @@ classDiagram
  ```
 シーケンス図
 
-```mermaid
+
 学生ログイン
+```mermaid
 sequenceDiagram
 actor Student as 学生
 participant UI as ログイン画面
@@ -183,8 +184,9 @@ else 学生情報取得失敗
 end
 ```
 
-```mermaid
+
 出席登録
+```mermaid
 sequenceDiagram
 actor Teacher as 教員
 participant UI as QR読取画面
@@ -238,8 +240,8 @@ else QRトークン無効
 end
 ```
 
-```mermaid
 出席履歴確認
+```mermaid
 sequenceDiagram
 actor Student as 学生
 participant UI as ダッシュボード
@@ -266,8 +268,9 @@ UI-->>Student: 履歴一覧表示
 
 状態遷移図
 
-```mermaid
+
 学生セッション
+```mermaid
 stateDiagram-v2
     [*] --> 未認証
 
@@ -287,8 +290,9 @@ stateDiagram-v2
     未認証 --> [*]
 ```
 
-```mermaid
+
 QRコード
+```mermaid
 stateDiagram-v2
     [*] --> 未生成
 
@@ -308,8 +312,8 @@ stateDiagram-v2
     再生成待ち --> [*]
 ```
 
-```mermaid
 出席記録
+```mermaid
 stateDiagram-v2
     [*] --> 未登録
 
@@ -330,8 +334,9 @@ stateDiagram-v2
     遅刻登録済み --> [*]
 ```
 
-```mermaid
+
 出席
+```mermaid
 stateDiagram-v2
     [*] --> 未ログイン
 
