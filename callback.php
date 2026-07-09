@@ -11,8 +11,12 @@ $clientSecret = '';
 $redirectUri  = '';
 
 
-// 【設定2】許可したい組織のドメイン（@以降）を入力してください（例: 'sample.ac.jp'）
-$allowedDomain = 'g.nihon-u.ac.jp'; 
+// 【設定2】許可したい組織のドメインを「配列」で複数指定します
+$allowedDomains = [
+    'g.nihon-u.ac.jp',
+    'nihon-u.ac.jp' // ここに2つ目のドメインを入力してください
+]; 
+
 
 // Googleクライアントの設定
 $client = new Google\Client();
@@ -38,10 +42,14 @@ try {
     $email = $userInfo->getEmail(); // メールアドレスを取得
     $name  = $userInfo->getName();  // 名前を取得
 
-    // 入力検証（方針4）：メールアドレスのドメインが指定のものと一致するかチェック
-    if (str_ends_with($email, '@' . $allowedDomain)) {
+    // メールアドレスからドメイン部分（@以降）を抽出
+    $emailParts = explode('@', $email);
+    $userDomain = end($emailParts);
+
+    // 入力検証（方針4）：抽出したドメインが許可リスト（配列）に含まれているかチェック
+    if (in_array($userDomain, $allowedDomains, true)) {
         
-        // 認証成功：セッションにユーザー情報を保存（既存の要件定義の「学生情報取得」に対応）
+        // 認証成功：セッションにユーザー情報を保存
         $_SESSION['user_logged_in'] = true;
         $_SESSION['user_email']     = $email;
         $_SESSION['user_name']      = $name;
@@ -54,13 +62,13 @@ try {
         exit;
         
     } else {
-        // ドメインが異なる場合はエラー画面へ（方針4）
+        // 許可されていないドメインの場合はエラー画面へ
         header('Location: index.php?error=invalid_domain');
         exit;
     }
 
 } catch (Exception $e) {
-    // Googleとの通信エラーなどの例外処理（方針4）
+    // Googleとの通信エラーなどの例外処理
     header('Location: index.php?error=auth_failed');
     exit;
 }
