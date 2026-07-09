@@ -154,8 +154,9 @@ else ユーザー未登録
 end
 ```
 
-```mermaid
+
 QRコード生成
+```mermaid
 sequenceDiagram
 actor Student as 学生
 participant UI as ダッシュボード
